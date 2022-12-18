@@ -1,0 +1,17 @@
+name: gyant-dcl
+
+services:
+
+  backend:
+    container_name: dcl-backend
+    build: images/backend/.
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=dockercompose
+
+  database:
+    container_name: dcl-database
+    build: images/database/.
+    ports:
+      - "27017:27017"
