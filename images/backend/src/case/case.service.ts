@@ -16,15 +16,15 @@ export class CaseService {
   }
 
   findAll() {
-    return this.caseModel.find().exec();
+    return this.caseModel.find({ reviewedBy: null }).exec();
   }
 
   findOne(id: number) {
     return `This action returns a #${id} case`;
   }
 
-  update(id: number, updateCaseDto: UpdateCaseDto) {
-    return `This action updates a #${id} case`;
+  update(id: string, updateCaseDto: UpdateCaseDto) {
+    return this.caseModel.findOneAndUpdate({ case: id }, {reviewedBy: updateCaseDto.reviewedBy}).exec();
   }
 
   remove(id: number) {

@@ -16,6 +16,9 @@ export class Case {
   @Prop({ required: true })
   caseDescription: string;
 
+  @Prop()
+  reviewedBy: string;
+
 }
 
 export const CaseSchema = SchemaFactory.createForClass(Case);

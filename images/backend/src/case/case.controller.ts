@@ -24,7 +24,7 @@ export class CaseController {
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateCaseDto: UpdateCaseDto) {
-    return this.caseService.update(+id, updateCaseDto);
+    return this.caseService.update(id, updateCaseDto);
   }
 
   @Delete(':id')
