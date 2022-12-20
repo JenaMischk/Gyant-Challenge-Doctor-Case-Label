@@ -1,6 +1,10 @@
 # Gyant-Challenge-Doctor-Case-Label
 
 
+### Requirements
+Docker Desktop or standalone installs of Docker + Docker Compose
+
+
 ### Generate Images for Backend (NestJS) and Database (MongoDB)
 ```docker compose build```
 
@@ -13,10 +17,13 @@
 ### Manually start dcl-database container
 ```docker start dcl-database```
 
-### Start local (host) development server
+### Start backend local (host) development server
 ```cd ./images/backend/```  
 ```npm run start:dev```
 
+### Start frontend local (host) development server
+```cd ./images/frontend/```  
+```npm start```
 
 
 ## Production Preview
