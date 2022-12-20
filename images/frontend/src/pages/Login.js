@@ -59,7 +59,7 @@ function Login({ authenticatedUser, setAuthenticatedUser }) {
 
                     <>
                         <p>
-                            Your are logged in as {authenticatedUser}.
+                            You are logged in as {authenticatedUser}.
                         </p> 
                         <button onClick={logout}>
                             Logout

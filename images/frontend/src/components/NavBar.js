@@ -22,7 +22,7 @@ function NavBar({ authenticatedUser, setAuthenticatedUser }) {
             <>
               <Nav className="me-auto">
                 <Link to="/" className='Navbar-link'>Home</Link>
-                <Link to="link" className='Navbar-link'>Link</Link>
+                <Link to="cases" className='Navbar-link'>Cases</Link>
               </Nav>
               <Navbar.Text>
                 Signed in as: <Link to="login">{ authenticatedUser }</Link>

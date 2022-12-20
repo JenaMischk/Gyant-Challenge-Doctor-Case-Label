@@ -1,12 +1,14 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useState } from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./pages/Layout";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
 import Login from './pages/Login';
-import { useState } from 'react';
 import CreateAccount from './pages/CreateAccount';
+import ReviewCases from './pages/ReviewCases';
+
 
 
 function App() {
@@ -30,6 +32,12 @@ function App() {
             <Login 
               authenticatedUser={authenticatedUser}
               setAuthenticatedUser={setAuthenticatedUser}
+            />
+          }/>
+
+          <Route path="cases" element={
+            <ReviewCases 
+              authenticatedUser={authenticatedUser}
             />
           }/>
 

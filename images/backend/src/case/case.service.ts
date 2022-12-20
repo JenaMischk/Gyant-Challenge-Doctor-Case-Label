@@ -1,15 +1,22 @@
 import { Injectable } from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
+import { Model } from 'mongoose';
 import { CreateCaseDto } from './dto/create-case.dto';
 import { UpdateCaseDto } from './dto/update-case.dto';
+import { Case, CaseDocument } from './schema/case.schema';
+
 
 @Injectable()
 export class CaseService {
+
+  constructor(@InjectModel(Case.name) private caseModel: Model<CaseDocument>) {}
+
   create(createCaseDto: CreateCaseDto) {
     return 'This action adds a new case';
   }
 
   findAll() {
-    return `This action returns all case`;
+    return this.caseModel.find().exec();
   }
 
   findOne(id: number) {
