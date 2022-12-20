@@ -2,7 +2,7 @@
 
 
 ### Requirements
-Docker Desktop or standalone installs of Docker + Docker Compose
+Docker Desktop or standalone installs of Docker and Docker Compose
 
 
 ### Generate Images for Backend (NestJS) and Database (MongoDB)

@@ -3,7 +3,14 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Link } from 'react-router-dom';
 
-function NavBar({ authenticatedUser }) {
+function NavBar({ authenticatedUser, setAuthenticatedUser }) {
+
+  function logout(e) {
+    e.preventDefault();
+    setAuthenticatedUser(false);
+  };
+
+
   return (
     <Navbar>
       <Container>
@@ -19,6 +26,10 @@ function NavBar({ authenticatedUser }) {
               </Nav>
               <Navbar.Text>
                 Signed in as: <Link to="login">{ authenticatedUser }</Link>
+                {' '}
+                <span onClick={logout}>
+                  | Logout
+                </span>
               </Navbar.Text>
             </> :
             <Navbar.Text>

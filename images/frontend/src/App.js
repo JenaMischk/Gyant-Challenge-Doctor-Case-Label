@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
 import Login from './pages/Login';
 import { useState } from 'react';
+import CreateAccount from './pages/CreateAccount';
 
 
 function App() {
@@ -15,16 +16,29 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Layout authenticatedUser={authenticatedUser} />}>
+
+        <Route path="/" element={
+          <Layout 
+            authenticatedUser={authenticatedUser}
+            setAuthenticatedUser={setAuthenticatedUser}
+          />
+        }>
+
           <Route index element={<Home />} />
+
           <Route path="login" element={
             <Login 
               authenticatedUser={authenticatedUser}
               setAuthenticatedUser={setAuthenticatedUser}
             />
           }/>
+
+          <Route path="createaccount" element={<CreateAccount setAuthenticatedUser={setAuthenticatedUser}/>} />
+
           <Route path="*" element={<NotFound />} />
+
         </Route>
+
       </Routes>
     </BrowserRouter>
   );

@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
+
 
 
 function Login({ authenticatedUser, setAuthenticatedUser }) {
@@ -8,9 +10,13 @@ function Login({ authenticatedUser, setAuthenticatedUser }) {
 
     function handleSubmit(e) {
         e.preventDefault();
-        console.log(username, password);
         setAuthenticatedUser(username);
     }
+
+    function logout(e) {
+        e.preventDefault();
+        setAuthenticatedUser(false);
+    };
 
     return (
         <>
@@ -21,27 +27,39 @@ function Login({ authenticatedUser, setAuthenticatedUser }) {
 
             {
                 authenticatedUser ?
-                    
-                    <p>
-                        Your are logged in as {authenticatedUser}
-                    </p> 
-                    
-                    :
 
-                    <form onSubmit={handleSubmit}>
+                    <>
+                        <p>
+                            Your are logged in as {authenticatedUser}.
+                        </p> 
+                        <button onClick={logout}>
+                            Logout
+                        </button>
+                    </> :
 
-                        <label htmlFor="username"><b>Username</b></label>
-                        <input type="text" placeholder="Enter Username" name="username" onChange={e => setUserName(e.target.value)}/>
-        
-                        <label htmlFor="password"><b>Password</b></label>
-                        <input type="password" placeholder="Enter Password" name="password" onChange={e => setPassword(e.target.value)}/>
-        
-                        <button type="submit">Login</button>
-        
-                    </form>
+                    <>
+                        <form onSubmit={handleSubmit}>
+
+                            <label htmlFor="username"><b>Username</b></label>
+                            <input type="text" placeholder="Enter Username" name="username" required
+                                onChange={e => setUserName(e.target.value)}/>
+            
+                            <label htmlFor="password"><b>Password</b></label>
+                            <input type="password" placeholder="Enter Password" name="password" required
+                                onChange={e => setPassword(e.target.value)}/>
+
+                            <button type="submit">Login</button>
+
+                        </form>
+
+                        <br/>
+
+                        <div>
+                            <h2>Don't have a user account? <Link to="../createaccount">Create one now</Link></h2>
+                        </div>
+                    </>
 
             }
-
 
         </>
     );

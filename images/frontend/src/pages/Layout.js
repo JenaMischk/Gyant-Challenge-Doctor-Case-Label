@@ -1,11 +1,11 @@
 import NavBar from './../components/NavBar';
 import { Outlet } from "react-router-dom";
 
-function Layout({ authenticatedUser }) {
+function Layout({ authenticatedUser, setAuthenticatedUser }) {
     return (
         <>
             <div className="App">
-                <NavBar authenticatedUser={authenticatedUser}/>
+                <NavBar authenticatedUser={authenticatedUser} setAuthenticatedUser={setAuthenticatedUser}/>
                 <div className="App-body">
                     <Outlet />      
                 </div>
