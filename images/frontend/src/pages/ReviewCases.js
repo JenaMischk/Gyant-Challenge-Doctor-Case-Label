@@ -85,6 +85,12 @@ function ReviewCases({ authenticatedUser }) {
 
     }
 
+    if(!authenticatedUser){
+        return (
+            <p>Please create an account and login to review cases</p>
+        );
+    }
+
     return (
         <>
             <h2>Review Cases</h2>

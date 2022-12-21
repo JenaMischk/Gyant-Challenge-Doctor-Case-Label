@@ -15,7 +15,6 @@ function App() {
 
   const [authenticatedUser, setAuthenticatedUser] = useState(false); 
 
-  //TODO: Implement protected routes
   return (
     <BrowserRouter>
       <Routes>
@@ -27,7 +26,11 @@ function App() {
           />
         }>
 
-          <Route index element={<Home />} />
+          <Route index element={
+            <Home
+              authenticatedUser={authenticatedUser} 
+            />}
+          />
 
           <Route path="login" element={
             <Login 
