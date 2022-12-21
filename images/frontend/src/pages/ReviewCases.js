@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
 import Form from 'react-bootstrap/Form';
+import * as constants from './../Constants';
+
 
 
 async function updateCase(caseId, body) {
-    return fetch(`http://localhost:4000/case/${caseId}`, {
+    return fetch(`http://${constants.BACKEND_URL}:${constants.BACKEND_PORT}/case/${caseId}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json'
@@ -14,7 +16,7 @@ async function updateCase(caseId, body) {
 }
 
 async function getCases() {
-    return fetch('http://localhost:4000/case', {
+    return fetch(`http://${constants.BACKEND_URL}:${constants.BACKEND_PORT}/case`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json'
@@ -27,7 +29,7 @@ async function getCases() {
 }
 
 async function getConditions() {
-    return fetch('http://localhost:4000/condition', {
+    return fetch(`http://${constants.BACKEND_URL}:${constants.BACKEND_PORT}/condition`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json'

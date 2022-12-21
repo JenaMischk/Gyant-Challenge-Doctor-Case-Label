@@ -2,11 +2,20 @@ name: gyant-dcl
 
 services:
 
+  frontend:
+    container_name: dcl-frontend
+    build: images/frontend/.
+    ports:
+      - "3000:3000"
+    environment:
+      - REACT_APP_BACKEND_URL=dcl-backend
+      - REACT_APP_BACKEND_PORT=4000
+
   backend:
     container_name: dcl-backend
     build: images/backend/.
     ports:
-      - "3000:3000"
+      - "4000:4000"
     environment:
       - NODE_ENV=dockercompose
 

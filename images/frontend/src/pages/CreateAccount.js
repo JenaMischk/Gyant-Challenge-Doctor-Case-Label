@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
+import * as constants from './../Constants';
 
 
 async function createUser(credentials) {
-    return fetch('http://localhost:4000/user', {
+    return fetch(`http://${constants.BACKEND_URL}:${constants.BACKEND_PORT}/user`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

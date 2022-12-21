@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
+import * as constants from './../Constants';
 
 
 
@@ -14,7 +15,7 @@ function Login({ authenticatedUser, setAuthenticatedUser }) {
     const [error, setError] = useState();
 
     async function loginUser(credentials) {
-        return fetch('http://localhost:4000/user/login', {
+        return fetch(`http://${constants.BACKEND_URL}:${constants.BACKEND_PORT}/user/login`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
