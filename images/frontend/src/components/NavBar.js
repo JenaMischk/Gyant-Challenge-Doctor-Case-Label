@@ -10,7 +10,7 @@ function NavBar({ authenticatedUser, setAuthenticatedUser }) {
     setAuthenticatedUser(false);
   };
 
-
+  //TODO: Fix user display on mobile
   return (
     <Navbar>
       <Container>

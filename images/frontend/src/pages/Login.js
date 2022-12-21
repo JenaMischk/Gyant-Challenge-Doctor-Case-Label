@@ -38,7 +38,7 @@ function Login({ authenticatedUser, setAuthenticatedUser }) {
         });
         if(token){
             setAuthenticatedUser(token.displayName ? token.displayName : false);
-            navigate('/');
+            navigate('/cases');
         }
     }
 

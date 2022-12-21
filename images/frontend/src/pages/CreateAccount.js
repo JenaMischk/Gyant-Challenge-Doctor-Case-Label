@@ -29,7 +29,7 @@ function CreateAccount({ setAuthenticatedUser }) {
           password: password
         });
         setAuthenticatedUser(token.displayName);
-        navigate('/');
+        navigate('/cases');
     }
 
     return (

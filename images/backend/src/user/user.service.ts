@@ -17,6 +17,8 @@ export class UserService {
   }
 
   login(loginUserDto: LoginUserDto){
+    //TODO: Change fetch based on plain text password to fetch based on username only;
+    //Validate stored hashed password locally and send back a JWT that we can validate on every request with an interceptor
     return this.userModel.findOne({ displayName: loginUserDto.displayName, password: loginUserDto.password }).exec();
   }
 

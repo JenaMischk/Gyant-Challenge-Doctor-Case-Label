@@ -15,6 +15,7 @@ function App() {
 
   const [authenticatedUser, setAuthenticatedUser] = useState(false); 
 
+  //TODO: Implement protected routes
   return (
     <BrowserRouter>
       <Routes>
