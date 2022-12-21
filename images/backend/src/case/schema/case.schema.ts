@@ -19,6 +19,9 @@ export class Case {
   @Prop()
   reviewedBy: string;
 
+  @Prop()
+  conditionList: Array<string>;
+
 }
 
 export const CaseSchema = SchemaFactory.createForClass(Case);

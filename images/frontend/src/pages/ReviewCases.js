@@ -1,39 +1,50 @@
 import { useState, useEffect } from 'react';
 import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
 
 
-function ReviewCases() {
+async function updateCase(caseId, body) {
+    return fetch(`http://localhost:4000/case/${caseId}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(body)
+    })
+    .then(data => data.json());
+}
+
+async function getCases() {
+    return fetch('http://localhost:4000/case', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(data => data.json())
+    .catch(err => {
+        console.log(err.toString());
+    });
+}
+
+async function getConditions() {
+    return fetch('http://localhost:4000/condition', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(data => data.json())
+    .catch(err => {
+        console.log(err.toString());
+    });
+}
+
+
+function ReviewCases({ authenticatedUser }) {
 
     const [cases, setCases] = useState([]);
     const [currentCase, setcurrentCase] = useState();
     const [conditions, setConditions] = useState([]);
-
-    async function getCases() {
-        return fetch('http://localhost:4000/case', {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        })
-        .then(data => data.json())
-        .catch(err => {
-            console.log(err.toString());
-        });
-    }
-
-    async function getConditions() {
-        return fetch('http://localhost:4000/condition', {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        })
-        .then(data => data.json())
-        .catch(err => {
-            console.log(err.toString());
-        });
-    }
 
     const fetchData = async () => {
         const caseData = await getCases();
@@ -53,20 +64,25 @@ function ReviewCases() {
 
 
     const handleSubmit = async e => {
+
         e.preventDefault();
         const formData = new FormData(e.target);
         const formDataObj = Object.fromEntries(formData.entries());
-        const conditions = Object.keys(formDataObj);
+        const conditionList = Object.keys(formDataObj);
+
         console.log(conditions);
-        /*const token = await loginUser({
-          name: username.replace(/\s+/g,'').toLowerCase(),
-          displayName: username,
-          password: password
+
+        const res = await updateCase(
+            currentCase.case, {
+                reviewedBy: authenticatedUser,
+                conditionList: conditionList
         });
-        if(token){
-            setAuthenticatedUser(token.displayName ? token.displayName : false);
-            navigate('/');
-        }*/
+
+        if(res){
+            document.getElementById('submit-case-label').reset();
+            fetchData();
+        }
+
     }
 
     return (
@@ -91,7 +107,7 @@ function ReviewCases() {
                 </div>
 
                 <div className='Review-container-child'>
-                {conditions && 
+                {currentCase && conditions && 
                     <>
                         <p>Select conditions</p>
                         <div className='Conditions-scrollview'>
@@ -115,7 +131,11 @@ function ReviewCases() {
                 }  
                 </div> 
 
-            </div>       
+            </div>  
+
+            {!currentCase &&
+                <p>No more cases left to review</p>
+            }     
 
         </>
     );

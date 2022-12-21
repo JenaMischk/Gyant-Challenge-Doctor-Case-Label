@@ -24,7 +24,11 @@ export class CaseService {
   }
 
   update(id: string, updateCaseDto: UpdateCaseDto) {
-    return this.caseModel.findOneAndUpdate({ case: id }, {reviewedBy: updateCaseDto.reviewedBy}).exec();
+    return this.caseModel.findOneAndUpdate(
+      { case: id }, {
+        reviewedBy: updateCaseDto.reviewedBy,
+        conditionList: updateCaseDto.conditionList
+      }).exec();
   }
 
   remove(id: number) {
