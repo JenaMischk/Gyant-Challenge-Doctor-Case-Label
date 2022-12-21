@@ -6,7 +6,10 @@ import { UserModule } from './user/user.module';
 import { CaseModule } from './case/case.module';
 import { ConditionModule } from './condition/condition.module';
 
-const dbConnString = process.env.NODE_ENV === 'dockercompose' ? 'mongodb://dcl-database/dcl' : 'mongodb://localhost/dcl';
+const dbPort = process.env.NODE_DATABASE_PORT ? process.env.NODE_DATABASE_PORT : 27017;
+const dbConnString = process.env.NODE_ENV === 'dockercompose' ? `mongodb://dcl-database:${dbPort}/dcl` : `mongodb://localhost:${dbPort}/dcl`;
+
+console.log(dbConnString);
 
 @Module({
   imports: [
