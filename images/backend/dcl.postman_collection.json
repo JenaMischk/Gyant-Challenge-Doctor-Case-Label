@@ -1,0 +1,199 @@
+{
+	"info": {
+		"_postman_id": "f7003ba2-f38c-4c34-b31a-0a30ec3056c2",
+		"name": "dcl",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "create user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"test\",\r\n    \"displayName\": \"Mr Test\",\r\n    \"password\": \"password\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/user",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"test\",\r\n    \"displayName\": \"Mr Test\",\r\n    \"password\": \"password\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/user/login",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:4000/user",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get single user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:4000/user/639f59e4b990382e8290ec5e",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"user",
+								"639f59e4b990382e8290ec5e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete user",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:4000/user/639f59e4b990382e8290ec5e",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"user",
+								"639f59e4b990382e8290ec5e"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "case",
+			"item": [
+				{
+					"name": "get cases",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:4000/case",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"case"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update case",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"reviewedBy\": \"tefdsfdsst\",\r\n    \"conditionList\": [\"A\", \"B\", \"C\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:4000/case/00F5FC934E3FCE1778B175D98B8E691C",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"case",
+								"00F5FC934E3FCE1778B175D98B8E691C"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "conditions",
+			"item": [
+				{
+					"name": "get conditions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:4000/condition",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"condition"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
